@@ -15,21 +15,23 @@ const EmployeeDetails = () => {
   }, [id]);
 
   return (
-    <div className="flex justify-center min-h-screen bg-gray-50">
-      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-md text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-3">
+    <div className="flex justify-center   bg-transparent">
+      <div className="bg-white/50 backdrop-blur-md shadow-xl rounded-2xl p-10 w-full max-w-lg text-center border border-white/40">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Name: <span className="text-blue-600">{employee.name}</span>
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-xl text-gray-700 mb-2">
           Role: <span className="font-medium">{employee.role}</span>
         </p>
 
         {employee.imageUrl && (
-          <img
-            src={employee.imageUrl}
-            alt={employee.name}
-            className="w-32 h-32 rounded-full mx-auto mt-4 object-cover border border-gray-200"
-          />
+          <div className="flex justify-center mt-6">
+            <img
+              src={employee.imageUrl}
+              alt={employee.name}
+              className="w-40 h-40 rounded-full object-cover border-4 border-blue-400 shadow-md"
+            />
+          </div>
         )}
       </div>
     </div>

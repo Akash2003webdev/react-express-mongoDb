@@ -17,8 +17,8 @@ const DeleteEmployee = () => {
   }, [id, navigate]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white shadow-md rounded-2xl p-8 text-center">
+    <div className=" flex items-center justify-center bg-gray-50">
+      <div className=" shadow-md rounded-2xl p-8 text-center">
         <p className="text-lg font-medium text-gray-800 mb-2">
           Deleting employee...
         </p>

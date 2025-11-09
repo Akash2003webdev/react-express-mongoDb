@@ -4,24 +4,30 @@ import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(true); // ✅ added loading state
 
   useEffect(() => {
     async function getAllEmployees() {
       const data = await getEmployees();
       setEmployees(data);
+      setLoading(false); // ✅ stop loading when done
     }
     getAllEmployees();
   }, []);
 
   return (
     <div className="flex flex-wrap justify-center gap-6 p-6">
-      {employees.length > 0 &&
+      {loading ? (
+        <p className="text-white-600 text-lg font-large animate-pulse">
+          Loading...
+        </p>
+      ) : employees.length > 0 ? (
         employees.map((emp) => {
           const { _id, name, imageUrl } = emp;
           return (
             <div
               key={_id}
-              className="border border-gray-300 bg-white rounded-xl shadow-md p-4 w-60 text-center hover:shadow-lg transition"
+              className="border border-gray-300 bg-white/60 rounded-xl shadow-md p-4 w-60 text-center hover:shadow-lg transition"
             >
               <img
                 src={imageUrl}
@@ -51,7 +57,10 @@ const EmployeeList = () => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <p className="text-gray-600 text-lg font-medium">No employees found.</p>
+      )}
     </div>
   );
 };

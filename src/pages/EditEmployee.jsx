@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getEmployeeById, updateEmployee } from "../api";
 
 const EditEmployee = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     password: "",
@@ -26,10 +27,11 @@ const EditEmployee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await updateEmployee(id, form);
+    navigate("/");
   };
 
   return (
-    <div className="min-h-screen flex  justify-center bg-gray-50 p-4">
+    <div className=" flex  justify-center bg-gray-50 p-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-lg bg-white shadow-md rounded-2xl p-6 space-y-4"
